@@ -30,7 +30,7 @@ func main() {
 		log.Fatalf("Failed to create wallet: %v", err)
 	}
 
-	if !wallet.Exists("appUser") {
+	if true {
 		err = populateWallet(wallet)
 		if err != nil {
 			log.Fatalf("Failed to populate wallet contents: %v", err)
@@ -127,12 +127,13 @@ func populateWallet(wallet *gateway.Wallet) error {
 		"msp",
 	)
 
-	certPath := filepath.Join(credPath, "signcerts", "cert.pem")
+	certPath := filepath.Join(credPath, "signcerts", "User1@org1.example.com-cert.pem")
 	// read the certificate pem
 	cert, err := ioutil.ReadFile(filepath.Clean(certPath))
 	if err != nil {
 		return err
 	}
+	fmt.Println(string(cert))
 
 	keyDir := filepath.Join(credPath, "keystore")
 	// there's a single file in this dir containing the private key

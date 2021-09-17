@@ -124,6 +124,7 @@ installChaincode() {
   ORG=$1
   setGlobals $ORG
   set -x
+  peer channel list
   peer lifecycle chaincode install ${CC_NAME}.tar.gz >&log.txt
   res=$?
   { set +x; } 2>/dev/null
